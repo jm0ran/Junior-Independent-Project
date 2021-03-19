@@ -7,14 +7,20 @@ const User = require("../models/user"); //Imports user schmea we defined in the 
 
 routes.get('/register', (req, res) => {
     console.log("get request")
-    res.render("register");
+    res.render("register", {errorMessages: null});
 })
 
-routes.post('/register', (req, res) => {
+routes.post('/register', async (req, res) => {
     let validationPassed = true;
     console.log("post request");
     const { email, name, password1, password2 } = req.body; //Breaks down object properties into variables
+    const flatEmail = email.toLowerCase();
     const errorMessages = new Array;
+    const doesUserExist = await User.exists({email: flatEmail}); //Returns true of false if email is already in use, await is used to hold continuing code until the boolean is decided
+    if (doesUserExist){
+        validationPassed = false;
+        errorMessages.push("Email is being used with a different account");
+    }
     if (!name || !password1 || !password2 || !email){
         validationPassed = false;
         errorMessages.push("Not all fields are filled In");
@@ -28,7 +34,6 @@ routes.post('/register', (req, res) => {
         errorMessages.push("Your password is too short");
     }
 
-
     if (validationPassed){  
         bcrypt.genSalt(10, (err, salt) =>  {
             if (err){
@@ -41,7 +46,7 @@ routes.post('/register', (req, res) => {
                     else{
                         const newUser = new User({
                             name: name,
-                            email: email,
+                            email: flatEmail,
                             password: hash
                         })
                         newUser.save()
@@ -56,7 +61,8 @@ routes.post('/register', (req, res) => {
         })
     }
     else{
-        res.send(errorMessages);
+        res.render("register", { errorMessages: errorMessages })
+        //res.send(errorMessages);
     }
 })
 

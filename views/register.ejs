@@ -8,6 +8,13 @@
 </head>
 <body>
     <h1>Register</h1>
+    <p>
+        <%  if(errorMessages){ %>
+        <% for(message of errorMessages){ %>
+            <p><%= message %></p>
+            <%}%>
+        <% } %>
+    </p>
     <div class="Registering Form">
         <form action="/register" method="post">
             <label for="name">Name:</label>
