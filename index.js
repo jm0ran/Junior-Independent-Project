@@ -20,7 +20,7 @@ const app = express(); //Initializes app with express
 
 
 app.set("view engine", "ejs"); //Sets application view engine to ejs
-app.use(bodyParser.urlencoded({ //Middleware used to handle post requests
+app.use(express.urlencoded({ //Middleware used to handle post requests
     extended: true
 }));
 app.use("/", routes) //Throws all requests to our router object
