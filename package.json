@@ -1,0 +1,25 @@
+{
+  "name": "junior-independent-project",
+  "version": "1.0.0",
+  "description": "Contractor Job Managing Application (Name TBD)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jm0ran/Junior-Independent-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jm0ran/Junior-Independent-Project/issues"
+  },
+  "homepage": "https://github.com/jm0ran/Junior-Independent-Project#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
