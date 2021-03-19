@@ -4,7 +4,7 @@ const userSpecific = require("./userSpecific"); //User specific variables
 const ejs = require("ejs"); //Importing ejs for page templating, will let us serve dynamic pages to the user
 const bodyParser = require("body-parser"); //Importing the body parser so express has the ability to process post requests 
 const mongoose = require("mongoose"); //Importing mongoose to give us the ability to connect to our database
-
+const path = require("path");
 
 // Code below handles database connection as well as 
 mongoose.connect(userSpecific.mongoConnection, { useNewUrlParser: true, useUnifiedTopology: true})
@@ -18,7 +18,7 @@ mongoose.connect(userSpecific.mongoConnection, { useNewUrlParser: true, useUnifi
 
 const app = express(); //Initializes app with express
 
-
+app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs"); //Sets application view engine to ejs
 app.use(express.urlencoded({ //Middleware used to handle post requests
     extended: true
