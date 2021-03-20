@@ -2,7 +2,6 @@ const express = require("express"); //Importing Express for the actual html serv
 const routes = require("./routing/mainRoutes"); //Importing our main router object for express to use (keeps index less junky)
 const userSpecific = require("./userSpecific"); //User specific variables
 const ejs = require("ejs"); //Importing ejs for page templating, will let us serve dynamic pages to the user
-const bodyParser = require("body-parser"); //Importing the body parser so express has the ability to process post requests 
 const mongoose = require("mongoose"); //Importing mongoose to give us the ability to connect to our database
 const path = require("path");
 
