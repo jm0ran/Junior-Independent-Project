@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
     <div class="container text-center" id="registerBlock">
         <br>
-        <h1>Create an Account</h1>
+        <h1>Login to Your Account</h1>
         
         <div class="container" id="alerts">
             <%  if(errorMessages){ %>
@@ -23,11 +23,7 @@
         
         <hr>
         <div class="container" id="registerForm">
-            <form action="/register" method="post">
-                <div class="row">
-                    <div class="col-6"> Name: </div>
-                    <div class="col-6"> <input type="text" name="name" id="name"><br> </div>
-                </div>
+            <form action="/login" method="post">
                 <div class="row">
                     <div class="col-6"> Email: </div>
                     <div class="col-6"> <input type="email" name="email" id="email"><br> </div>
@@ -35,10 +31,6 @@
                 <div class="row">
                     <div class="col-6"> Password: </div>
                     <div class="col-6"> <input type="password" name="password1" id="password1"><br> </div>
-                </div>
-                <div class="row">
-                    <div class="col-6"> Confirm Password:</div>
-                    <div class="col-6">  <input type="password" name="password2" id="password2"><br> </div>
                 </div>
                 <div class="row">
                     <div class="col-12"> <input class="btn btn-lg btn-primary" type="submit"> </div>

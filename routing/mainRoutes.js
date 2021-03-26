@@ -6,8 +6,13 @@ const User = require("../models/user"); //Imports user schmea we defined in the 
 
 
 routes.get('/register', (req, res) => {
-    console.log("get request")
+    console.log("get request to register page");
     res.render("register", {errorMessages: null});
+})
+
+routes.get('/login', (req, res) => {
+    console.log("get request to login page");
+    res.render("login", {errorMessages: null});
 })
 
 routes.post('/register', async (req, res) => {
@@ -62,8 +67,14 @@ routes.post('/register', async (req, res) => {
     }
     else{
         res.render("register", { errorMessages: errorMessages })
-        //res.send(errorMessages);
     }
 })
+
+routes.post("/login", (req, res) => {
+    console.log(req.body.email)
+    console.log(req.body.password1)
+    res.send({email: req.body.email, password: req.body.password1});
+})
+
 
 module.exports = routes;
