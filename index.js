@@ -4,6 +4,14 @@ const userSpecific = require("./userSpecific"); //User specific variables
 const ejs = require("ejs"); //Importing ejs for page templating, will let us serve dynamic pages to the user
 const mongoose = require("mongoose"); //Importing mongoose to give us the ability to connect to our database
 const path = require("path");
+const passport = require("passport");
+
+
+//Passport Config
+//Passes in our passport variable
+const initPassport = require("./passport-config");
+initPassport(passport);
+
 
 // Code below handles database connection as well as 
 mongoose.connect(userSpecific.mongoConnection, { useNewUrlParser: true, useUnifiedTopology: true})
@@ -15,6 +23,7 @@ mongoose.connect(userSpecific.mongoConnection, { useNewUrlParser: true, useUnifi
 })
 
 
+
 const app = express(); //Initializes app with express
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -22,6 +31,11 @@ app.set("view engine", "ejs"); //Sets application view engine to ejs
 app.use(express.urlencoded({ //Middleware used to handle post requests
     extended: true
 }));
+
+//Passport Config and Setup
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use("/", routes) //Throws all requests to our router object
 
 

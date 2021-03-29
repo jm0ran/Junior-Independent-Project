@@ -1,7 +1,7 @@
 const routes = require("express").Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/user"); //Imports user schmea we defined in the models folder
-
+const passport = require("passport");
 
 
 
@@ -70,11 +70,17 @@ routes.post('/register', async (req, res) => {
     }
 })
 
-routes.post("/login", (req, res) => {
-    console.log(req.body.email)
-    console.log(req.body.password1)
-    res.send({email: req.body.email, password: req.body.password1});
+
+//Login Handling
+routes.post("/login", 
+    passport.authenticate("local", {   
+        successRedirect: "/good",
+        failureRedirect: "/login"
+    }), (req, res) => {
+    res.send(user.password)
 })
+
+
 
 
 module.exports = routes;
