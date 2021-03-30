@@ -4,17 +4,19 @@ const User = require("../models/user"); //Imports user schmea we defined in the 
 const passport = require("passport");
 
 
-
+//Render the register page
 routes.get('/register', (req, res) => {
     console.log("get request to register page");
     res.render("register", {errorMessages: null});
 })
 
+//Render The Login Page
 routes.get('/login', (req, res) => {
     console.log("get request to login page");
     res.render("login", {errorMessages: null});
 })
 
+//All our programming logic for our registering form
 routes.post('/register', async (req, res) => {
     let validationPassed = true;
     console.log("post request");
@@ -71,13 +73,12 @@ routes.post('/register', async (req, res) => {
 })
 
 
-//Login Handling
+//Our programming logic gateway for our login page, most logic is within out local strategy
 routes.post("/login", 
     passport.authenticate("local", {   
-        successRedirect: "/good",
         failureRedirect: "/login"
     }), (req, res) => {
-    res.send(user.password)
+    res.send(req.user);
 })
 
 
