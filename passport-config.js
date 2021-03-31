@@ -7,7 +7,7 @@ const initialize = (passport) => {
     passport.use(
         new LocalStrategy({usernameField: "email"}, (email, password, done) => {
             console.log("ran strat")
-            User.findOne({email: email.toLowerCase()})
+            User.findOne({email: email.toLowerCase()}) //Looks for matching user based on email
             .then(user => {
                 //Runs after checking for user
                 if(!user){ //If there is no user that exists
@@ -37,12 +37,20 @@ const initialize = (passport) => {
         })
     )
     passport.serializeUser((user, done) => {
-        console.log("Attempted to serialize")
-        done(null, user.id)
+        console.log(user);
+        done(null, user.id);
     });
     passport.deserializeUser((id, done) => {
         console.log("Attempted to deserialize")
-        done(null, user.id)
+        User.findById(id)
+        .then(user => {
+            if (user){
+               done(null, user) 
+            }
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
     });
 }
 

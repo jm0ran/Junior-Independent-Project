@@ -16,6 +16,10 @@ routes.get('/login', (req, res) => {
     res.render("login", {errorMessages: null});
 })
 
+routes.get("/home", (req, res) => {
+    res.json(req.user);
+})
+
 //All our programming logic for our registering form
 routes.post('/register', async (req, res) => {
     let validationPassed = true;
@@ -76,9 +80,10 @@ routes.post('/register', async (req, res) => {
 //Our programming logic gateway for our login page, most logic is within out local strategy
 routes.post("/login", 
     passport.authenticate("local", {   
+        successRedirect: "/home",
         failureRedirect: "/login"
     }), (req, res) => {
-    res.send(req.user);
+    res.render("home", {name: req.user.name, email: req.user.email});
 })
 
 

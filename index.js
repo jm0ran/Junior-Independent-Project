@@ -5,6 +5,7 @@ const ejs = require("ejs"); //Importing ejs for page templating, will let us ser
 const mongoose = require("mongoose"); //Importing mongoose to give us the ability to connect to our database
 const path = require("path");
 const passport = require("passport");
+const session = require("express-session")
 
 
 //Passport Config
@@ -26,21 +27,30 @@ mongoose.connect(userSpecific.mongoConnection, { useNewUrlParser: true, useUnifi
 
 const app = express(); //Initializes app with express
 
+//Public Static Folder for CSS
 app.use(express.static(path.join(__dirname, "public")));
+
+
 app.set("view engine", "ejs"); //Sets application view engine to ejs
 app.use(express.urlencoded({ //Middleware used to handle post requests
     extended: true
 }));
 
 //Passport Config and Setup
+app.use(session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false
+    // ,cookie: {secure: true} 
+}))
+
+//passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/", routes) //Throws all requests to our router object
 
-
-
-
+//router middleware
+app.use("/", routes) 
 
 
 
