@@ -19,6 +19,7 @@ const initialize = (passport) => {
                     bcrypt.compare(password, user.password)
                     .then(matches =>{
                         if(matches){
+                            console.log("user found");
                             return done(null, user);
                         }else{
                             console.log("incorrect password");

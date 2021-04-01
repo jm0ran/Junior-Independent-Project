@@ -25,12 +25,13 @@ mongoose.connect(userSpecific.mongoConnection, { useNewUrlParser: true, useUnifi
 
 
 
+
+
+
 const app = express(); //Initializes app with express
 
 //Public Static Folder for CSS
 app.use(express.static(path.join(__dirname, "public")));
-
-
 app.set("view engine", "ejs"); //Sets application view engine to ejs
 app.use(express.urlencoded({ //Middleware used to handle post requests
     extended: true

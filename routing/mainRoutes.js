@@ -4,6 +4,15 @@ const User = require("../models/user"); //Imports user schmea we defined in the 
 const passport = require("passport");
 
 
+const isAuthenticated = (req, res, next) => {
+    if(req.user){
+        next()
+    }else{
+        res.redirect("/login")
+    }
+}
+
+
 //Render the register page
 routes.get('/register', (req, res) => {
     console.log("get request to register page");
@@ -16,7 +25,8 @@ routes.get('/login', (req, res) => {
     res.render("login", {errorMessages: null});
 })
 
-routes.get("/home", (req, res) => {
+routes.get("/home", isAuthenticated,
+    (req, res) => {
     res.json(req.user);
 })
 
@@ -85,6 +95,7 @@ routes.post("/login",
     }), (req, res) => {
     res.render("home", {name: req.user.name, email: req.user.email});
 })
+
 
 
 
