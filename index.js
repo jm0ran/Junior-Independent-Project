@@ -1,3 +1,6 @@
+//This is our main document, our injection point to start program
+//Like the motherboard or something ifykyk
+
 const express = require("express"); //Importing Express for the actual html server hosting
 const routes = require("./routing/mainRoutes"); //Importing our main router object for express to use (keeps index less junky)
 const userSpecific = require("./userSpecific"); //User specific variables
@@ -22,10 +25,6 @@ mongoose.connect(userSpecific.mongoConnection, { useNewUrlParser: true, useUnifi
 .catch((err) => {
     console.log("Failed to connect to database")
 })
-
-
-
-
 
 
 const app = express(); //Initializes app with express

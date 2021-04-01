@@ -1,3 +1,7 @@
+//This is our passport configuration file where we define our strategy
+//Strategy is used to login then serialize and deserialize
+//Serialization is handled by storing userId in cookies
+
 const User = require("./models/user");
 const mongoose = require("mongoose")
 const LocalStrategy = require("passport-local").Strategy;
@@ -6,7 +10,6 @@ const bcrypt = require("bcrypt");
 const initialize = (passport) => {
     passport.use(
         new LocalStrategy({usernameField: "email"}, (email, password, done) => {
-            console.log("ran strat")
             User.findOne({email: email.toLowerCase()}) //Looks for matching user based on email
             .then(user => {
                 //Runs after checking for user
@@ -38,7 +41,6 @@ const initialize = (passport) => {
         })
     )
     passport.serializeUser((user, done) => {
-        console.log(user);
         done(null, user.id);
     });
     passport.deserializeUser((id, done) => {

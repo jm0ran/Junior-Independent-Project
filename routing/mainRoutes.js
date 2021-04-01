@@ -1,9 +1,12 @@
+//This is our main router document, it directs the traffic on our website
+//We create a router object with express then export it
+
 const routes = require("express").Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/user"); //Imports user schmea we defined in the models folder
 const passport = require("passport");
 
-
+//Middleware to protect routes that will need to be logged into access
 const isAuthenticated = (req, res, next) => {
     if(req.user){
         next()
@@ -96,8 +99,5 @@ routes.post("/login",
     res.render("home", {name: req.user.name, email: req.user.email});
 })
 
-
-
-
-
+//Exports router
 module.exports = routes;
