@@ -30,7 +30,7 @@ routes.get('/login', (req, res) => {
 
 routes.get("/home", isAuthenticated,
     (req, res) => {
-    res.json(req.user);
+    res.render("home", {name: req.user.name});
 })
 
 //All our programming logic for our registering form

@@ -1,0 +1,21 @@
+li{
+	padding-left: 10vw;
+	padding-right: 10vw;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.mainNav{
+	background-color: grey;
+}
+.mainContain{
+	padding: 50px;
+}
+
+.dashContent .col-6{
+	text-align: center;
+	padding: 10px;
+}
+.icon{
+	display: inline;
+	width: 50%;
+}
