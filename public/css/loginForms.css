@@ -2,9 +2,6 @@
   margin-left: 100px;
   margin-right: 100px;
 }
-.row {
-  margin: 20px;
-}
 .mainContainer{
   display: flex;
   height: 100vh;
@@ -14,8 +11,12 @@
 }
 .contentContainer{
   margin-bottom: 150px;
-  border: 1px solid black;
+  border: 2px solid black;
   padding: 40px;
   border-radius: 30px;
-  box-shadow: 5px 10px;
+  box-shadow: 10px 10px rgb(31, 30, 30);
 }
+.form-control{
+  width: 100%;
+}
+
