@@ -6,46 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/loginForms.css">
 </head>
 <body>
-    <div class="container text-center" id="registerBlock">
-        <br>
-        <h1>Create an Account</h1>
+    <div class="mainContainer text-center" id="registerBlock">
+        <div class="contentContainer">
+            <h1>Create an Account</h1>
         
-        <div class="container" id="alerts">
+            <div class="container" id="alerts">
             <%  if(errorMessages){ %>
             <% for(message of errorMessages){ %>
                 <div class="alert alert-warning"><%= message %></div>
                 <%}%>
             <% } %>
-        </div>
-        
-        <hr>
-        <div class="container" id="registerForm">
+            </div>
+            <hr>
+            
             <form action="/register" method="post">
-                <div class="row">
-                    <div class="col-6"> Name: </div>
-                    <div class="col-6"> <input type="text" name="name" id="name"><br> </div>
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name:</label>
+                    <input type="text" class="form-control" name="name" id="name">
                 </div>
-                <div class="row">
-                    <div class="col-6"> Email: </div>
-                    <div class="col-6"> <input type="email" name="email" id="email"><br> </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address:</label>
+                    <input type="email" class="form-control" name="email" id="email">
                 </div>
-                <div class="row">
-                    <div class="col-6"> Password: </div>
-                    <div class="col-6"> <input type="password" name="password1" id="password1"><br> </div>
+                <div class="form-group">
+                    <label for="password1" class="form-label">Password:</label>
+                    <input type="password" class="form-control" name="password1" id="password1">
                 </div>
-                <div class="row">
-                    <div class="col-6"> Confirm Password:</div>
-                    <div class="col-6">  <input type="password" name="password2" id="password2"><br> </div>
+                <div class="form-group">
+                    <label for="password2" class="form-label">Password:</label>
+                    <input type="password" class="form-control" name="password2" id="password2">
                 </div>
-                <div class="row">
-                    <div class="col-12"> <input class="btn btn-lg btn-primary" type="submit"> </div>
+                <br>
+                <div class="form-group">
+                    <input class="btn btn-lg btn-primary" type="submit">
                 </div>
             </form>
         </div>
-        <br>
+        
     </div>
 </body>
 </html>

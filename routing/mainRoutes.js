@@ -76,7 +76,7 @@ routes.post('/register', async (req, res) => {
                         newUser.save()
                         .then(user => {
                             console.log("User successfully saved to database")
-                            res.send("registered")
+                            res.redirect("/login")
                         })
                         .catch(err => console.log(err.message))
                     }
