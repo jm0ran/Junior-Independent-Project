@@ -6,23 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/loginForms.css">
 </head>
 <body>
-    <div class="container text-center" id="registerBlock">
-        <br>
-        <h1>Login to Your Account</h1>
+    <div class="mainContainer text-center" id="registerBlock">
+        <div class="contentContainer">
+            <h1>Login to Your Account</h1>
         
-        <div class="container" id="alerts">
+            <div class="container" id="alerts">
             <%  if(errorMessages){ %>
             <% for(message of errorMessages){ %>
                 <div class="alert alert-warning"><%= message %></div>
                 <%}%>
             <% } %>
-        </div>
-        
-        <hr>
-        <div class="container" id="registerForm">
+            </div>
+            <hr>
+            
             <form action="/login" method="post">
                 <div class="row">
                     <div class="col-6"> Email: </div>
@@ -37,7 +36,7 @@
                 </div>
             </form>
         </div>
-        <br>
+        
     </div>
 </body>
 </html>
