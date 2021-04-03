@@ -11,42 +11,33 @@
 	<link rel="stylesheet" href="/css/home.css" type="text/css" />
 </head>
 <body>
-<div class="mainNav">
-	<h1>Welcome Back <%= name %></h1>
-</div>
-
-<div class="mainContain">
-	<div class="headRow row">
-		
-	</div>
-	
-	<div class="container dashMain">
-		<div class="row dashContent">
-			<div class="col-6">
-				Create A New Job<br>
-				<img class="icon" src="assets/plus.svg">
+	<div class="mainContainer text-center" id="registerBlock">
+        <div class="contentContainer">
+            <h1> Welcome Back <%= name %></h1>
+			<div class="dashVertical">
+				<div class="dashHorizontal">
+					<figure>
+						<img src="assets/plus.svg" class="icon">
+						<figcaption>Create A New Job</figcaption>
+					</figure>
+					<figure>
+						<img src="assets/book-alt.svg" class="icon">
+						<figcaption>View/Modify Jobs</figcaption>
+					</figure>
+				</div>
+				<div class="dashHorizontal">
+					<figure>
+						<img src="assets/users-alt.svg" class="icon">
+						<figcaption>Manage Employees</figcaption>
+					</figure>
+					<figure>
+						<img src="assets/signout.svg" class="icon">
+						<figcaption>Logout</figcaption>
+					</figure>
+				</div>
 			</div>
-			<div class="col-6">
-				View/Modify Jobs<br>
-				<img class="icon" src="assets/book-alt.svg">
-			</div>
-			
 		</div>
-		<div class="row dashContent">
-			<div class="col-6">
-				Manage Employees<br>
-				<img class="icon" src="assets/users-alt.svg">
-			</div>
-			<div class="col-6">
-				Logout<br>
-				<img class="icon" src="assets/signout.svg">
-			</div>
-			
-		</div>
-	</div>
-	</div>
-	
-</div>
+	</div>	
 
 </body>
 </html>

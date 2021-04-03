@@ -1,15 +1,25 @@
-.mainNav{
-	background-color: grey;
-}
-.mainContain{
-	padding: 50px;
-}
-
-.dashContent .col-6{
-	text-align: center;
-	padding: 10px;
-}
 .icon{
-	display: inline;
-	width: 50%;
+	height: 28vh;
+}
+.mainContainer{
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.dashVertical{
+	display: flex;
+	flex-direction: column;
+	
+}
+.dashHorizontal{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+figure{
+	margin: 50px
+}
+figcaption{
+	color: rgb(101, 99, 255);
 }
