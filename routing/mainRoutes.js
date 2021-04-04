@@ -28,9 +28,17 @@ routes.get('/login', (req, res) => {
     res.render("login", {errorMessages: null});
 })
 
+//Render the Home Page
 routes.get("/home", isAuthenticated,
     (req, res) => {
-    res.render("home", {name: req.user.name});
+        res.render("home", {name: req.user.name});
+})
+
+//Render newJob page for test purposes
+routes.get("/new", isAuthenticated,
+    (req, res) => {
+        console.log("get request to newJob page");
+        res.render("newJob", {})
 })
 
 //All our programming logic for our registering form
