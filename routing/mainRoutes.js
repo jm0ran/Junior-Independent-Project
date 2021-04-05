@@ -107,5 +107,11 @@ routes.post("/login",
     res.render("home", {name: req.user.name, email: req.user.email});
 })
 
+routes.post("/newJob", isAuthenticated,
+(req, res) => {
+    console.log(`Job Name: ${req.body.jobName}. Job Desc: ${req.body.jobDesc}. Created By: ${req.user.name}`)
+    res.redirect("/home")
+})
+
 //Exports router
 module.exports = routes;
