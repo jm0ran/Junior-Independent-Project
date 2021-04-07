@@ -17,10 +17,14 @@ const userSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now()
+    },
+    jobs: {
+        type: Array,
+        default: ["Test1", "Test2", "Test3"]
     }
 });
 
 //Creates User model using the previously defined schema
-const User = mongoose.model("Users", userSchema);
+const User = mongoose.model("Users", userSchema, "userCollection");
 
 module.exports = User

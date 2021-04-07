@@ -4,6 +4,7 @@
 const routes = require("express").Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/user"); //Imports user schmea we defined in the models folder
+const Job = require("../models/job");
 const passport = require("passport");
 
 //Middleware to protect routes that will need to be logged into access
@@ -109,8 +110,22 @@ routes.post("/login",
 
 routes.post("/newJob", isAuthenticated,
 (req, res) => {
-    console.log(`Job Name: ${req.body.jobName}. Job Desc: ${req.body.jobDesc}. Created By: ${req.user.name}`)
+    const {jobName, jobDesc} = req.body
+    const newJob = new Job({
+        jobName: jobName,
+        jobDesc: jobDesc
+    })
+    newJob.save()
+    .then(newJob => {
+        //The following is the ID I want to save in user job array
+        console.log(`New Job Saved With ID: ${newJob.id}`)
+    })
+    .catch(err => console.log(err.message))
     res.redirect("/home")
+    //The New Job post method needs to do one main thing off the bat, 
+    //it needs to create a new job item to store in the database
+    //It needs to store that jobs id in the jobs property of request's user object
+    //Needs to update the user object
 })
 
 //Exports router

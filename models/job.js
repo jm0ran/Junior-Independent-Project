@@ -9,19 +9,21 @@ const jobSchema = new mongoose.Schema({
     jobDesc: {
         type: String,
         required: true
-    },
-    jobCreator: {
-        type: String,
-        required: true
-    },
-    jobMembers: {
-        type: Array,
-        required: true
     }
+    //Below is temporarily commented for testing
+    // },
+    // jobCreator: {
+    //     type: String,
+    //     required: true
+    // },
+    // jobMembers: {
+    //     type: Array,
+    //     required: true
+    // }
 })
 
 //Investigate the following command under bookmarked page
-const Job = mongoose.model("Job", jobSchema);
+const Job = mongoose.model("Job", jobSchema, "jobCollection");
 
 module.exports = Job;
 
