@@ -117,8 +117,21 @@ routes.post("/newJob", isAuthenticated,
     })
     newJob.save()
     .then(newJob => {
-        //The following is the ID I want to save in user job array
-        console.log(`New Job Saved With ID: ${newJob.id}`)
+        const currentUserJobs = req.user.jobs;
+        currentUserJobs.push(newJob.id)
+        User.findById(req.user.id)
+        .then(foundUser => {
+            if(foundUser){
+                foundUser.jobs = currentUserJobs;
+                foundUser.save()
+                .then(console.log("Save Successful"))
+                .catch(err => console.log(err.message))
+            }else{
+                console.log("Failed to find user by ID")
+            }
+        })
+        .catch(err => console.log(err.message))
+        
     })
     .catch(err => console.log(err.message))
     res.redirect("/home")
