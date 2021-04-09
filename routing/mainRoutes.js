@@ -42,6 +42,12 @@ routes.get("/new", isAuthenticated,
         res.render("newJob", {})
 })
 
+//Temp Register for Jobs Page
+routes.get("/viewJobs", (req, res) => {
+    res.render("viewJobs", {})
+})
+
+
 //All our programming logic for our registering form
 routes.post('/register', async (req, res) => {
     let validationPassed = true;
