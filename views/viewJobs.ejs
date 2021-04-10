@@ -9,19 +9,31 @@
     <link rel="stylesheet" type="text/css" href="/css/dataPage.css">
 </head>
 <body>
+    <!-- I almost want to switch to cards for this job view page instead of a table, but too tired atm-->
     <div class="mainContainer text-center">
         <div class="contentContainer">
             <h2>Jobs</h2>
-            <table class=jobTable>
-                <tr class="jobItem">
-                    <td>
-                        Job 1
-                    </td>
-                    <td>
-                        1.2
-                    </td>
-                </tr>
-            </table>
+            <div class="tableContainer">
+                <table class="jobTable">
+                    <tr class="jobItem">
+                        <th>Job Name</th>
+                        <th>Job Location</th>
+                        <th>Date</th>
+                    <tr>
+                    <tr class="jobItem">
+                        <td>
+                            Moving Job 1
+                        </td>
+                        <td>
+                            590 Boston Road
+                        </td>
+                        <td>
+                            April 19th 2021
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <a href="/home"><button class="btn btn-lg btn-primary">Dashboard</button></a>
         </div>
     </div>
 </body>

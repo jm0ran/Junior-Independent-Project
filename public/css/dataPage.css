@@ -18,13 +18,15 @@
     text-align: left;
 }
 .jobTable{
-    border: 1px solid black;
     width: 100%;
     border-radius: 10px;
 }
-td{
-    /* border: 2px solid black; */
-    padding: 5px;
+.jobItem td, .jobItem th{
+    border: 2px solid black;
+    padding: 10px;
+}
+button{
+    margin-top: 20px;
 }
 
   
