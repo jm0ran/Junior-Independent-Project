@@ -15,6 +15,18 @@ const isAuthenticated = (req, res, next) => {
         res.redirect("/login")
     }
 }
+const fetchUserJobs = async (jobs) => {
+    const foundJobs = new Array;
+    for (const job of jobs){
+        await Job.findById(job)
+        .then(value => {
+            foundJobs.push(value)
+        })
+        .catch(err => console.log(err.message))
+    }
+    return foundJobs;
+    //Need to pass this job back tomorrow
+}
 
 
 //Render the register page
@@ -43,21 +55,9 @@ routes.get("/new", isAuthenticated,
 })
 
 //Temp Register for Jobs Page
-routes.get("/viewJobs", (req, res) => {
-    res.render("viewJobs", {jobs: [
-        {
-            name: "Moving Job 1",
-            description: "Basic moving job",
-            location: "555 Laurel Lane",
-            date: "May 28th 2021"
-        },
-        {
-            name: "Moving Job 2",
-            description: "Advanced moving job",
-            location: "892 Yahndi Drive",
-            date: "March 17th 2022"
-        },
-    ]})
+routes.get("/viewJobs", isAuthenticated,
+    async (req, res) => {
+    res.render("viewJobs", {jobs: await fetchUserJobs(req.user.jobs)})
 })
 
 
