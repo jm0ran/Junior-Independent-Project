@@ -9,7 +9,16 @@ const jobSchema = new mongoose.Schema({
     jobDesc: {
         type: String,
         required: true
+    },
+    jobLocation: {
+        type: String,
+        required: true
+    },
+    jobDate: {
+        type: Date,
+        default: Date.now()
     }
+    
     //Below is temporarily commented for testing
     // },
     // jobCreator: {

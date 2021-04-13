@@ -13,24 +13,38 @@
     <div class="mainContainer text-center">
         <div class="contentContainer">
             <h2>Jobs</h2>
+            <hr>
             <div class="tableContainer">
                 <table class="jobTable">
                     <tr class="jobItem">
                         <th>Job Name</th>
-                        <th>Job Location</th>
+                        <th>Description</th>
+                        <th>Location</th>
                         <th>Date</th>
                     <tr>
-                    <tr class="jobItem">
-                        <td>
-                            Moving Job 1
-                        </td>
-                        <td>
-                            590 Boston Road
-                        </td>
-                        <td>
-                            April 19th 2021
-                        </td>
-                    </tr>
+                    <% if(jobs){%>
+                        <% for (const job of jobs){ %>
+                            <tr class="jobItem">
+                                <td>
+                                    <%= job.name %>
+                                </td>
+                                <td>
+                                    <%= job.description %>
+                                </td>
+                                <td>
+                                    <%= job.location %>
+                                </td>
+                                <td>
+                                    <%= job.date %>
+                                </td>
+                            </tr>
+                        <% }%>
+                    <% } %>
+
+
+
+
+                    
                 </table>
             </div>
             <a href="/home"><button class="btn btn-lg btn-primary">Dashboard</button></a>

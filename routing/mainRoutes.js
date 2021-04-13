@@ -44,7 +44,20 @@ routes.get("/new", isAuthenticated,
 
 //Temp Register for Jobs Page
 routes.get("/viewJobs", (req, res) => {
-    res.render("viewJobs", {})
+    res.render("viewJobs", {jobs: [
+        {
+            name: "Moving Job 1",
+            description: "Basic moving job",
+            location: "555 Laurel Lane",
+            date: "May 28th 2021"
+        },
+        {
+            name: "Moving Job 2",
+            description: "Advanced moving job",
+            location: "892 Yahndi Drive",
+            date: "March 17th 2022"
+        },
+    ]})
 })
 
 
@@ -116,10 +129,11 @@ routes.post("/login",
 
 routes.post("/newJob", isAuthenticated,
 (req, res) => {
-    const {jobName, jobDesc} = req.body
+    const {jobName, jobDesc, jobLocation} = req.body
     const newJob = new Job({
         jobName: jobName,
-        jobDesc: jobDesc
+        jobDesc: jobDesc,
+        jobLocation: jobLocation,
     })
     newJob.save()
     .then(newJob => {
